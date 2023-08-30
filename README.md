@@ -7,7 +7,8 @@ The goal is to provide a similar experience than unmarshalling a JSON byte array
 Usage:
 ```
 go get "github.com/franklyner/reqbin"
-
+```
+```
 import (
   "github.com/franklyner/reqbin"
 )
@@ -26,4 +27,6 @@ if err := reqbin.UnmarshallRequestForm(req, s); err != nil {
 }
 ```
 If the query of the request contained the parameters with the names defined in the struct tags, then fields of s will be populated with the corresponding values.
+
+See the documentation of the function UnmarshallRequestForm for more details.
 
