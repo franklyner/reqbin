@@ -1,3 +1,3 @@
-module github.com/franklyner/request-binding
+module github.com/franklyner/reqbin
 
 go 1.20
