@@ -32,7 +32,11 @@ func TestValidateAndGetType(t *testing.T) {
 }
 
 func TestGetParamsAndFields(t *testing.T) {
-	s := TestStruct{}
+	s := struct {
+		Name    string `param:"name"`
+		IsCool  bool   `param:"is_cool"`
+		Counter int    `param:"counter"`
+	}{}
 	m := getListOfParamNames(reflect.ValueOf(s).Type())
 	if len(m) != 3 {
 		t.Errorf("didn't get expected map: %+v", m)
@@ -40,7 +44,7 @@ func TestGetParamsAndFields(t *testing.T) {
 }
 
 func TestFull(t *testing.T) {
-	r, _ := http.NewRequest(http.MethodGet, "http://something.com?name=Joe&is_cool=true&counter=1&start=20023-01-02T15:04:05Z", bytes.NewReader([]byte{}))
+	r, _ := http.NewRequest(http.MethodGet, "http://something.com?name=Joe&is_cool=true&counter=1&start=2023-01-02T15:04:05Z", bytes.NewReader([]byte{}))
 	s := &TestStruct{}
 	err := UnmarshallRequestForm(r, s)
 	if err != nil {
